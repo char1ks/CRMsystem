@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Добавить человека!</title>
+</head>
+<body>
+<form th:method="POST" th:action="@{/clothes}" th:object="${newCloth}">
+    <label for="nomination">Наивенование:</label>
+    <input type="text" th:field="*{nomination}" id="nomination">
+    <div class="error" th:if="${#fields.hasErrors('nomination')}" th:errors="*{nomination}">Login is incorrect</div>
+    <br>
+    <input type="submit" value="Добавить одежду!">
+</form>
+</body>
+</html>

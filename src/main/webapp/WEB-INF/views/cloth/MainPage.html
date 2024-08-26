@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>All person</title>
+</head>
+<body>
+    <div th:each=" cloth : ${allClothes}">
+        <a th:href="@{/clothes/{id}(id=${cloth.getId()})}" th:text="${cloth.getNomination()}"></a>
+    </div>
+</body>
+</html>

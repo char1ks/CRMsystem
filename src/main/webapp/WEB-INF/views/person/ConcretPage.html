@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${concretPerson.getName()}"></title>
+</head>
+<body>
+<h1 th:inline="text">Имя: <span th:text="${concretPerson.getName()}"></span></h1>
+<h2 th:inline="text">Возраст: <span th:text="${concretPerson.getAge()}"></span></h2>
+
+<a th:inline="text" th:href="@{/person/{id}/edit(id=${concretPerson.getId()})}">
+    <input type="submit" class="edit" value="Изменить">
+</a>
+<form th:method="DELETE" th:action="@{/person/{id}(id=${concretPerson.getId()})}" style="display:inline;">
+    <input type="submit" class="delete" value="Удалить этого человека!">
+</form>
+<h3>Предметы:</h3>
+<ul>
+    <li th:each="cloth : ${allClothes}">
+        <span th:text="${cloth.nomination}"></span>
+        <form th:method="POST" th:action="@{/clothes/{clothId}/detach(clothId=${cloth.getId()})}" style="display:inline;">
+            <input type="submit" class="detach" value="Открепить">
+        </form>
+    </li>
+</ul>
+</body>
+</html>

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Choose cloth</title>
+</head>
+<body>
+<div th:each="cloth : ${AllAvaliableClothes}">
+    <form th:action="@{/clothes/{person_id}/{cloth_id} (person_id=${person_id}, cloth_id=${cloth.getId()})}" method="post">
+        <input type="hidden" name="person_id" th:value="${person_id}" />
+        <input type="hidden" name="cloth_id" th:value="${cloth.getId()}" />
+        <button type="submit" th:text="${cloth.getNomination()}"></button>
+    </form>
+</div>
+</body>
+</html>

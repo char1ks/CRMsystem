@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Добавить человека!</title>
+</head>
+<body>
+<form th:method="POST" th:action="@{/person}" th:object="${newPerson}">
+    <label for="name">Имя:</label>
+    <input type="text" th:field="*{name}" id="name">
+    <div class="error" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Login is incorrect</div>
+    <br>
+    <label for="age">Age:</label>
+    <input type="range" th:field="*{age}" id="age" min="0" max="100" oninput="updateAgeValue(this.value)">
+    <div class="age-value" id="ageValue">0</div> <!-- Элемент для отображения выбранного значения -->
+    <div class="error" th:if="${#fields.hasErrors('age')}" th:errors="*{age}">Age is incorrect</div>
+    <br>
+    <input type="submit" value="Добавить человека!">
+</form>
+<script>
+    function updateAgeValue(value) {
+        document.getElementById('ageValue').textContent = value; // Обновляем текст с выбранным значением
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${editCloth.getNomination()}"></title>
+</head>
+<body>
+<form th:method="PATCH" th:action="@{/clothes/{id}(id=${editCloth.getId()})}" th:object="${editCloth}">
+    <label for="nomination">Наименование:</label>
+    <input type="text" th:field="*{nomination}" id="nomination" th:value="${editCloth.getNomination()}">
+    <div class="error" th:if="${#fields.hasErrors('nomination')}" th:errors="*{nomination}">Login is incorrect</div>
+    <br>
+    <input type="submit" value="Изменить одежду!">
+</form>
+</body>
+</html>

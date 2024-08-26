@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${concretCloth.getNomination()}"></title>
+</head>
+<body>
+<h1 th:inline="text">Наименование: <span th:text="${concretCloth.getNomination()}"></span></h1>
+<h1 th:inline="text">Владелец: <span th:text="${owner}"></span></h1>
+
+<a th:inline="text" th:href="@{/clothes/{id}/edit(id=${concretCloth.getId()})}">
+    <input type="submit" class="edit" value="Изменить">
+</a>
+<form th:method="DELETE" th:action="@{/clothes/{id}(id=${concretCloth.getId()})}" style="display:inline;">
+    <input type="submit" class="delete" value="Удалить эту одежду!">
+</form>
+</body>
+</html>
